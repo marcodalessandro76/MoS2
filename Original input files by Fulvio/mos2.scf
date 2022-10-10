@@ -1,0 +1,35 @@
+ &control
+          wf_collect = .true.,
+         calculation = "scf",
+           verbosity = 'high',
+          pseudo_dir = '/work/fpaleari/1l_MoS2/pseudos',
+              prefix = "mos2",
+              outdir = '.',
+ /&end
+ &system
+             ecutwfc = 140.0,
+         occupations = 'fixed',
+               ibrav = 4,
+           celldm(1) = 5.9000811881,
+           celldm(3) = 6.7795677253,
+                 nat = 3,
+                ntyp = 2,
+            lspinorb = .true.
+            noncolin = .true.
+            assume_isolated = '2D'
+        force_symmorphic = .true.
+ /&end
+ &electrons
+    electron_maxstep = 200,
+         mixing_beta = 0.7,
+            conv_thr = 1.d-14,
+ /&end
+  ATOMIC_SPECIES
+   Mo  95.940      Mo-fr.out
+   S    32.065      S-fr.out
+  ATOMIC_POSITIONS { crystal }
+Mo       0.333333333   0.666666667   0.000000000
+S        0.666666667   0.333333333   0.073413577
+S        0.666666667   0.333333333  -0.073413577
+ K_POINTS { automatic }
+12 12 1 0 0 0
