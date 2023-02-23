@@ -1,0 +1,48 @@
+&control
+    calculation='relax'
+    restart_mode='from_scratch',
+    prefix='MoS2_2H_pbe_nsoc',
+    pseudo_dir = '$PSEUDO_DIR',
+    outdir='./tmp'
+    verbosity = 'high' ,
+    tstress = .true. ,
+    tprnfor = .true. ,
+    wf_collect = .true.,
+    forc_conv_thr = 1.d-4
+    etot_conv_thr = 1.d-5
+/
+&system
+    ibrav=4, celldm(1)=5.9998,  celldm(3) = 3.998 
+    nat=6, ntyp= 2, 
+!    noncolin = .true.,
+!    lspinorb = .true.,
+   ecutwfc = 130 
+!   nbnd = 100
+   force_symmorphic=.true.
+   input_dft='vdw-df2-b86r',
+/
+ &electrons
+    startingwfc='atomic+random'
+    conv_thr =  $convg
+    mixing_beta = 0.7
+ /
+&ions
+    ion_dynamics='bfgs',
+    upscale=10
+/
+&cell
+    cell_dynamics = 'bfgs'
+    cell_dofree = 'all'
+/
+ATOMIC_SPECIES
+  S   32.065  S_ONCV_PBE-1.1.upf
+ Mo   183.84  Mo_ONCV_PBE-1.0.upf
+ATOMIC_POSITIONS (crystal)
+Mo            0.3333330000        0.6666670000        0.2500000000
+Mo            0.6666670000        0.3333330000        0.7500000000
+S             0.6666670000        0.3333330000        0.3768113548
+S             0.3333330000        0.6666670000        0.8768113548
+S             0.6666670000        0.3333330000        0.1231886452
+S             0.3333330000        0.6666670000        0.6231886452
+K_POINTS {automatic}
+12 12 2 0 0 0

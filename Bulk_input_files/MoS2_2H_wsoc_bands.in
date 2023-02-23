@@ -1,0 +1,57 @@
+&control
+    calculation='bands'
+    restart_mode='from_scratch',
+    prefix='MoS2_2H_wsoc_onvc',
+    pseudo_dir = '/m100/home/userexternal/mpalummo/D_pseudo/PWSCF/',
+    outdir='./tmp'
+    verbosity = 'high' ,
+    tstress = .true. ,
+    tprnfor = .true. ,
+    wf_collect = .true.,
+    forc_conv_thr = 1.d-4
+    etot_conv_thr = 1.d-5
+/
+&system
+    ibrav=0, 
+    celldm(1)= 5.99
+    nat=6, 
+    ntyp= 2, 
+    noncolin = .true.,
+    lspinorb = .true.,
+    ecutwfc = 80 
+!   input_dft='vdw-df2-b86r',
+   nbnd = 150
+/
+ &electrons
+    startingwfc='atomic+random'
+    conv_thr =  1.d-7
+    mixing_beta = 0.6
+ /
+&ions
+    ion_dynamics='bfgs',
+    upscale=10
+/
+&cell
+    cell_dynamics = 'bfgs'
+    cell_dofree = 'ibrav'
+/
+ATOMIC_SPECIES
+  S   32.065    S_ONCV_PBE-1.1.upf
+  Mo   183.84    Mo_ONCV_PBE_FR-1.0.upf
+CELL_PARAMETERS (alat=  5.99000000)
+   1.000704897   0.000000000   0.000000000
+  -0.500352448   0.866635862   0.000000000
+   0.000000000   0.000000000   3.908195259
+ATOMIC_POSITIONS (crystal)
+Mo            0.3333330000        0.6666670000        0.2499993434
+Mo            0.6666670000        0.3333330000        0.7500006566
+S             0.6666670000        0.3333330000        0.3768197298
+S             0.3333330000        0.6666670000        0.8768213622
+S             0.6666670000        0.3333330000        0.1231786378
+S             0.3333330000        0.6666670000        0.6231802702
+K_POINTS {crystal_b}
+4
+0.0 0.0 0.0 40
+0.5 0.0 0.0 40
+0.66666 -0.33333 0.0000 40
+0.0 0.0 0.0 1
