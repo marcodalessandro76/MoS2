@@ -3,7 +3,5 @@ Analysis of the quasi-particle band structure and electronic excitations in MoS2
 
 TO DO :
 
-1) Compute the optical and XUV abs spectrum for the MoS2 bulk. We use the input file
-   proivded by Maurizia and compute the DFT band structure. We compare it with the experimental
-   result and extract the value of the scissor. We compute the screening and finally we perform
-   the BSE analysis. 
+- perform DFT calculations with lattice parameter 3.0, 3.1 (or the actual value), 3.2 to test the effect
+  of the atomic distance on the direct/indirect caracther of the band structure
